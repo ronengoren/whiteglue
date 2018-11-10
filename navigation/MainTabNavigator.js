@@ -9,6 +9,10 @@ import NextDaytScreen from '../screens/NextDaytScreen';
 import UserProfileScreen from '../screens/UserProfileScreen';
 import MatchGameScreen from '../screens/MatchGameScreen';
 
+
+
+
+
 const ChangeDaytDayStack = createStackNavigator({
   ChangeDaytDay: ChangeDaytDayScreen,
 });
@@ -85,8 +89,8 @@ MatchGameeStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   UserProfileStack,
-  ChangeDaytDayStack,
-  MatchGameeStack,
   MessagesStack,
+  MatchGameeStack,
+  ChangeDaytDayStack,
   NextDaytStack,
 });

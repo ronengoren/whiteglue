@@ -1,0 +1,4 @@
+[Info  - 7:04:19 PM] Using tsserver from: /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib
+[Info  - 7:04:19 PM] Forking TSServer
+PATH: /Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/nycda/.rbenv/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/nycda/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/nycda/.rbenv/bin:/Users/nycda/.rbenv/shims:/Users/nycda/Library/Android/sdk/tools:/Users/nycda/Library/Android/sdk/tools/bin:/Users/nycda/Library/Android/sdk/platform-tools:/Users/nycda/Library/Android/sdk/emulator:/Users/nycda/Library/Android/sdk/tools:/Users/nycda/Library/Android/sdk/tools/bin:/Users/nycda/Library/Android/sdk/platform-tools:/Users/nycda/Library/Android/sdk/emulator
+[Info  - 7:04:21 PM] Started TSServer
