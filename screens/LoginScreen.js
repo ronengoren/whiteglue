@@ -33,7 +33,7 @@ export default class LoginScreen extends React.Component {
 
         var value = await AsyncStorage.getItem('user');
         if (value !== null) {
-            this.props.navigation.navigate('ChangeDaytDayScreen');
+            this.props.navigation.navigate('App');
         }
     }
     render() {

@@ -6,7 +6,7 @@ import MainTabNavigator from './MainTabNavigator';
 import AuthLoadingScreen from '../screens/AuthLoadingScreen';
 import UserProfileScreen from '../screens/UserProfileScreen';
 
-const AppStack = createStackNavigator({ Home: UserProfileScreen, Other: ChangeDaytDayScreen });
+const AppStack = createStackNavigator({ Home: MainTabNavigator, Other: ChangeDaytDayScreen });
 const AuthStack = createStackNavigator({ SignIn: LoginScreen });
 
 export default createSwitchNavigator({
