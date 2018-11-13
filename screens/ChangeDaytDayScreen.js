@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text } from 'react-native';
+import { ScrollView, StyleSheet, Text, Button, AsyncStorage, } from 'react-native';
 
 export default class ChangeDaytDayScreen extends React.Component {
     static navigationOptions = {
@@ -14,10 +14,18 @@ export default class ChangeDaytDayScreen extends React.Component {
                 <Text>
                     ChangeDaytDayScreen
                 </Text>
+                <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
+
             </ScrollView>
         );
     }
+    _signOutAsync = async () => {
+        await AsyncStorage.clear();
+        this.props.navigation.navigate('Auth');
+    };
+
 }
+
 
 const styles = StyleSheet.create({
     container: {

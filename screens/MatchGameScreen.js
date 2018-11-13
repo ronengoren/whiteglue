@@ -4,13 +4,18 @@ import {
     Image,
     Text,
     TouchableOpacity,
-    View
+    View,
+    Dimensions,
+    TouchableWithoutFeedback
 } from 'react-native';
 import SwipeCards from 'react-native-swipe-cards';
 // import Nav from '../components/Nav';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Iconz from 'react-native-vector-icons/Ionicons';
+import DoubleTap from '../components/DoubleTap';
 
+
+const w = Dimensions.get('window');
 
 var image1 = require('../assets/images/image1.jpg')
 var image2 = require('../assets/images/image2.jpg')
@@ -67,12 +72,29 @@ export default class MatchGameScreen extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            cards: Cards
+            cards: Cards,
+            liked: false,
+
+
         }
     }
     static navigationOptions = {
         title: 'Game',
     };
+    lastTap = null;
+    handleDoubleTap = () => {
+        const now = Date.now();
+        const DOUBLE_PRESS_DELAY = 300;
+        if (this.lastTap && (now - this.lastTap) < DOUBLE_PRESS_DELAY) {
+            this.toggleLike();
+        } else {
+            this.lastTap = now;
+        }
+    }
+    toggleLike = () => this.setState(state => ({ liked: !state.liked }));
+
+
+
     Card(x) {
         return (
             <View style={styles.card}>
@@ -119,7 +141,45 @@ export default class MatchGameScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <SwipeCards
+                {/* <DoubleTap onDoubleTap={this.toggleLike}> */}
+                <Image
+                    source={require('../assets/images/image3.jpg')}
+                    style={{ width: w.width, height: w.width }}
+                    resizeMode="cover"
+                />
+                {/* </DoubleTap> */}
+
+                <View style={styles.iconRow}>
+                    <TouchableOpacity onPress={this.toggleLike}>
+                        <Image
+                            source={this.state.liked ? require('../assets/images/heart.png') : require('../assets/images/heart-outline.png')}
+                            style={styles.heartIcon}
+                            resizeMode="cover"
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={this.toggleLike}>
+                        <Image
+                            source={this.state.liked ? require('../assets/images/heart.png') : require('../assets/images/heart-outline.png')}
+                            style={styles.heartIcon}
+                            resizeMode="cover"
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={this.toggleLike}>
+                        <Image
+                            source={this.state.liked ? require('../assets/images/heart.png') : require('../assets/images/heart-outline.png')}
+                            style={styles.heartIcon}
+                            resizeMode="cover"
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={this.toggleLike}>
+                        <Image
+                            source={this.state.liked ? require('../assets/images/heart.png') : require('../assets/images/heart-outline.png')}
+                            style={styles.heartIcon}
+                            resizeMode="cover"
+                        />
+                    </TouchableOpacity>
+
+                    {/* <SwipeCards
                     ref={'swiper'}
                     cards={this.state.cards}
                     containerStyle={{ backgroundColor: '#f7f7f7', alignItems: 'center', margin: 20 }}
@@ -137,44 +197,71 @@ export default class MatchGameScreen extends Component {
                     <TouchableOpacity style={styles.buttons} onPress={() => this.yup()}>
                         <Iconz name='ios-heart' size={36} color="#888" style={{ marginTop: 5 }} />
                     </TouchableOpacity>
+                </View> */}
                 </View>
             </View>
         );
     }
 }
 
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//         backgroundColor: '#f7f7f7',
+//     },
+//     buttons: {
+//         width: 80,
+//         height: 80,
+//         borderWidth: 10,
+//         borderColor: '#e7e7e7',
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//         borderRadius: 40
+//     },
+//     buttonSmall: {
+//         width: 50,
+//         height: 50,
+//         borderWidth: 10,
+//         borderColor: '#e7e7e7',
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//         borderRadius: 25
+//     },
+//     card: {
+//         flex: 1,
+//         alignItems: 'center',
+//         alignSelf: 'center',
+//         borderWidth: 2,
+//         borderColor: '#e3e3e3',
+//         width: 350,
+//         height: 420,
+//     }
+
+// });
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        // justifyContent: 'center',
+    },
+    iconRow: {
+        flexDirection: 'row',
+        alignSelf: 'stretch',
+        marginTop: 10,
+        paddingVertical: 5,
+        paddingHorizontal: 15,
+    },
+    heartIcon: {
 
-        backgroundColor: '#f7f7f7',
-    },
-    buttons: {
-        width: 80,
-        height: 80,
-        borderWidth: 10,
-        borderColor: '#e7e7e7',
+        width: 70,
+        height: 70,
+        margin: 8,
         justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 40
-    },
-    buttonSmall: {
-        width: 50,
-        height: 50,
-        borderWidth: 10,
-        borderColor: '#e7e7e7',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 25
-    },
-    card: {
-        flex: 1,
-        alignItems: 'center',
-        alignSelf: 'center',
-        borderWidth: 2,
-        borderColor: '#e3e3e3',
-        width: 350,
-        height: 420,
-    }
 
+
+    },
 });

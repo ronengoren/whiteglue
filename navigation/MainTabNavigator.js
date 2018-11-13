@@ -8,8 +8,25 @@ import MessagesScreen from '../screens/MessagesScreen';
 import NextDaytScreen from '../screens/NextDaytScreen';
 import UserProfileScreen from '../screens/UserProfileScreen';
 import MatchGameScreen from '../screens/MatchGameScreen';
+import LoginScreen from '../screens/LoginScreen';
 
+const LoginStack = createStackNavigator({
+  Login: LoginScreen,
+});
 
+LoginStack.navigationOptions = {
+  tabBarLabel: 'Login',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
+};
 
 
 
@@ -73,11 +90,11 @@ UserProfileStack.navigationOptions = {
   ),
 };
 
-const MatchGameeStack = createStackNavigator({
+const MatchGameStack = createStackNavigator({
   MatchGame: MatchGameScreen,
 });
 
-MatchGameeStack.navigationOptions = {
+MatchGameStack.navigationOptions = {
   tabBarLabel: 'Game',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -88,9 +105,10 @@ MatchGameeStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
+  // LoginStack,
   UserProfileStack,
+  MatchGameStack,
   MessagesStack,
-  MatchGameeStack,
   ChangeDaytDayStack,
   NextDaytStack,
 });
